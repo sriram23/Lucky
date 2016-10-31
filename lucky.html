@@ -1,0 +1,39 @@
+<html>
+	<head> 
+		<title>Lucky Number</title>
+	</head>
+	<body>
+	<table align="center">
+	<tr><td>
+	<input type = "text" id="val" placeholder="Enter your name"><br>
+	</td></tr>
+	<tr><td>
+	<input type = "button" value="Get Lucky Number" onclick="lucky()">
+	</td></tr>
+	</table>
+	<h2 align="center" id="txt1">Type your Name and hit the button to know your Lucky Number!</h2>
+	<p align="center" id="txt2" style="font-size:50px"></p>
+	<script>
+	function lucky(){
+		var name = document.getElementById("val").value;
+		var letter = name.split('');
+		var asci = [];
+		var sum = 0;
+		for(var i=0;i<letter.length;i++){
+ 			asci[i] = letter[i].charCodeAt(0);
+			asci[i] -= 96;
+			sum += asci[i];
+		}		
+		sum = correct(sum);
+		document.getElementById("txt1").innerHTML = "Hello "+name+" your Lucky Number is = > "+sum;
+		document.getElementById("txt2").innerHTML = sum;
+	}
+	function correct(x){
+		while(x > 9){
+			x =Math.floor(x%10) + Math.floor((x%100)/10) +Math.floor((x%1000)/100);
+		}
+		return x;
+	}
+	</script>
+	</body>
+</html>
